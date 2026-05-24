@@ -1,9 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "http://140.245.250.20:3001/api/$1"
+      "src": "/api/health",
+      "dest": "http://140.245.250.20:3001/api/health"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "http://140.245.250.20:3001/api/$1"
     }
   ]
 }

@@ -36,7 +36,7 @@ const nextConfig = {
         // Inside your next.config.js rewrites block:
         {
           source: '/api/health',
-          destination: 'http://<YOUR_OCI_IP>:3001/api/health',
+          destination: 'http://140.245.25.20:3001/api/health',
         },
       ],
     };

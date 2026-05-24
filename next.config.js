@@ -3,8 +3,6 @@ const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack: (config) => {
-    // Alias missing peer dependencies of @txnlab/use-wallet to an empty module
-    // This prevents webpack from failing during the resolution phase
     config.resolve.alias = {
       ...config.resolve.alias,
       "@web3auth/modal": path.resolve(__dirname, 'src/lib/dummy-module.ts'),
@@ -20,17 +18,24 @@ const nextConfig = {
       "@algorandfoundation/liquid-auth-use-wallet-client": path.resolve(__dirname, 'src/lib/dummy-module.ts'),
       "daffi-connect": path.resolve(__dirname, 'src/lib/dummy-module.ts'),
     };
-    
     return config;
   },
   async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'http://140.245.250.20:3001/api/:path*',
-      },
-    ]
+    return {
+      beforeFiles: [
+        // 1. Hardcoded diagnostic route to bypass wildcard parsing completely
+        {
+          source: '/api/health',
+          destination: 'http://140.245.250.20:3001/api/health',
+        },
+        // 2. Dynamic catch-all rule for the rest of your system
+        {
+          source: '/api/:path*',
+          destination: 'http://140.245.250.20:3001/api/:path*',
+        },
+      ],
+    };
   },
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;

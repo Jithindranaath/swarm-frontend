@@ -10,7 +10,7 @@ Modern Japanese tech dojo aesthetic — clean, calm, premium, academy-like. Stri
 - `dojo-bg`: #FAF9F5 — warm off-white background
 - `dojo-surface`: #FFFFFF — card surfaces
 - `dojo-teal`: #00BFA5 — primary accent
-- `dojo-gold`: #EAB308 — USDC amounts, earnings
+- `dojo-gold`: #EAB308 — bounty amounts, earnings
 - Lane colors: research (indigo), code (emerald), data (sky), outreach (amber)
 
 ## Setup
@@ -72,7 +72,7 @@ Download Satoshi from [Fontshare](https://www.fontshare.com/fonts/satoshi) and p
 
 ## Development Notes
 
-- USDC amounts are stored as microUSDC (integers) everywhere except display
+- Bounty amounts are stored as microALGO (integers) everywhere except display
 - All transaction logic lives in `src/lib/transactions/`, never in components
 - Lane colors come from `LANE_COLORS` constant, never hardcoded
 - Wallet connection required only for write actions (stake, list, license)
@@ -85,4 +85,3 @@ See `.env.example` for required variables. Key ones:
 - `NEXT_PUBLIC_API_URL`: Backend API endpoint
 - `NEXT_PUBLIC_WS_URL`: WebSocket endpoint for live feed
 - `NEXT_PUBLIC_DOJO_REGISTRY_APP_ID`: Algorand app ID
-- `NEXT_PUBLIC_USDC_ASSET_ID`: USDC asset ID (10458941 on TestNet)

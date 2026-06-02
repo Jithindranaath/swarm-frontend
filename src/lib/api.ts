@@ -1,6 +1,6 @@
 import algosdk from "algosdk";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://140.245.250.20:3001';
 const ALGOD_SERVER = "https://testnet-api.4160.nodely.io";
 const ALGOD_TOKEN = "";
 const ALGOD_PORT = "";
